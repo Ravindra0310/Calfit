@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Calfit</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="subText_track">Don\'t worry if you have trouble determining your goals, We can help you determine your goals and track your goals</string>
+    <string name="subText_east_well">Let\'s start a healthy lifestyle with us, we can determine your diet every day. healthy eating is fun</string>
+    <string name="subText_improve">Improve the quality of your sleep with us, good quality sleep can bring a good mood in the morning</string>
+    <string name="subText_burn">Let’s keep burning, to achive yours goals, it hurts only temporarily, if you give up now you will be in pain forever</string>
+    <string name="auth_text">By continuing you accept our Privacy Policy and Term of Use</string>
 </resources>

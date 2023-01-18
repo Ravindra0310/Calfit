@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/launchFragment">
+
+    <fragment
+        android:id="@+id/launchFragment"
+        android:name="com.example.calfit.login.LaunchFragment"
+        android:label="fragment_launch"
+        tools:layout="@layout/fragment_launch" >
+        <action
+            android:id="@+id/action_launchFragment_to_tutorialFragment1"
+            app:destination="@id/tutorialFragment1"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialFragment1"
+        android:name="com.example.calfit.login.tutorialFragment1"
+        android:label="fragment_tutorial1"
+        tools:layout="@layout/fragment_tutorial1" >
+        <action
+            android:id="@+id/action_tutorialFragment1_to_tutorialFragment2"
+            app:destination="@id/tutorialFragment2"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialFragment2"
+        android:name="com.example.calfit.login.tutorialFragment2"
+        android:label="fragment_tutorial2"
+        tools:layout="@layout/fragment_tutorial2" >
+        <action
+            android:id="@+id/action_tutorialFragment2_to_tutorialFragment3"
+            app:destination="@id/tutorialFragment3"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialFragment3"
+        android:name="com.example.calfit.login.TutorialFragment3"
+        android:label="fragment_tutorial3"
+        tools:layout="@layout/fragment_tutorial3" >
+        <action
+            android:id="@+id/action_tutorialFragment3_to_tutorialFragment4"
+            app:destination="@id/tutorialFragment4"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialFragment4"
+        android:name="com.example.calfit.login.TutorialFragment4"
+        android:label="fragment_tutorial4"
+        tools:layout="@layout/fragment_tutorial4"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left">
+        <action
+            android:id="@+id/action_tutorialFragment4_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.calfit.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.calfit.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_carouselFragment"
+            app:destination="@id/carouselFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carouselFragment"
+        android:name="com.example.calfit.CarouselFragment"
+        android:label="fragment_carousel"
+        tools:layout="@layout/fragment_carousel" />
+</navigation>
