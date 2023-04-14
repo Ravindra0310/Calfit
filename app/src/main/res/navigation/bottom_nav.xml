@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.calfit.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_bmiFragment"
+            app:destination="@id/bmiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/activityFragment"
+        android:name="com.example.calfit.ActivityFragment"
+        android:label="fragment_activity"
+        tools:layout="@layout/fragment_activity" >
+        <action
+            android:id="@+id/action_activityFragment_to_subActivityFragment"
+            app:destination="@id/subActivityFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.calfit.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.example.calfit.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.calfit.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/bmiFragment"
+        android:name="com.example.calfit.BmiFragment"
+        android:label="fragment_bmi"
+        tools:layout="@layout/fragment_bmi" />
+    <activity
+        android:id="@+id/livePreviewActivity"
+        android:name="com.example.calfit.customUI.LivePreviewActivity"
+        android:label="LivePreviewActivity" />
+    <fragment
+        android:id="@+id/subActivityFragment"
+        android:name="com.example.calfit.SubActivityFragment"
+        android:label="fragment_sub_activity"
+        tools:layout="@layout/fragment_sub_activity" >
+        <action
+            android:id="@+id/action_subActivityFragment_to_activityDetailsFragment"
+            app:destination="@id/activityDetailsFragment" />
+        <argument
+            android:name="variant"
+            app:argType="com.example.calfit.model.Variant" />
+    </fragment>
+    <fragment
+        android:id="@+id/activityDetailsFragment"
+        android:name="com.example.calfit.ActivityDetailsFragment"
+        android:label="fragment_activity_details"
+        tools:layout="@layout/fragment_activity_details" >
+        <argument
+            android:name="Variants"
+            app:argType="com.example.calfit.model.Variant" />
+    </fragment>
+</navigation>

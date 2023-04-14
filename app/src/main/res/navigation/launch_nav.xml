@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_carouselFragment"
+            app:destination="@id/carouselFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"

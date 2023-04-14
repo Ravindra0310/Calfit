@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/viewFinder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    </androidx.camera.view.PreviewView>
+
+    <ImageView
+        android:id="@+id/imageview_camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/camera"
+        android:visibility="visible" />
+    <ProgressBar
+        android:id="@+id/determinateBar"
+        style="@android:style/Widget.Material.ProgressBar.Small"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:layout_marginTop="-20dp"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/btn_clear"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:contentDescription="@string/clear"
+        android:layout_margin="10dp"
+        android:src="@drawable/clear_icon"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="646dp" />
+
+    <ImageView
+        android:id="@+id/button_from_device"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="50dp"
+        android:contentDescription="@string/gallery"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/gallery_icon2"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cameraCaptureButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/circle"
+        />
+
+
+
+</FrameLayout>

@@ -7,21 +7,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.calfit.R
-import kotlinx.android.synthetic.main.fragment_tutorial1.*
+import com.example.calfit.databinding.FragmentCarouselBinding
+import com.example.calfit.databinding.FragmentTutorial1Binding
+
 
 class tutorialFragment1 : Fragment() {
-
+    private var _binding: FragmentTutorial1Binding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial1, container, false)
+        _binding = FragmentTutorial1Binding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_continue.setOnClickListener {
+        binding.btnContinue.setOnClickListener {
             findNavController().navigate(R.id.action_tutorialFragment1_to_tutorialFragment2)
         }
     }

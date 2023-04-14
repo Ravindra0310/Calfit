@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.calfit.R
-import kotlinx.android.synthetic.main.fragment_tutorial1.*
+import com.example.calfit.databinding.FragmentTutorial1Binding
+import com.example.calfit.databinding.FragmentTutorial3Binding
 
 /**
  * A simple [Fragment] subclass.
@@ -17,17 +18,18 @@ import kotlinx.android.synthetic.main.fragment_tutorial1.*
 class TutorialFragment3 : Fragment() {
 
 
+    private var _binding: FragmentTutorial3Binding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial3, container, false)
+        _binding = FragmentTutorial3Binding.inflate(inflater, container, false)
+        return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_continue.setOnClickListener {
+        binding.btnContinue.setOnClickListener {
             findNavController().navigate(R.id.action_tutorialFragment3_to_tutorialFragment4)
         }
     }

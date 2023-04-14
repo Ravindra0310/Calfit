@@ -7,22 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.calfit.R
-import kotlinx.android.synthetic.main.fragment_launch.*
+import com.example.calfit.databinding.FragmentLaunchBinding
+import com.example.calfit.databinding.FragmentLoginBinding
+import com.example.calfit.databinding.FragmentTutorial1Binding
 
 
 class LaunchFragment : Fragment() {
-
+    private var _binding: FragmentLaunchBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_launch, container, false)
+        _binding = FragmentLaunchBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_start.setOnClickListener {
+        binding.btnStart.setOnClickListener {
             findNavController().navigate(R.id.action_launchFragment_to_tutorialFragment1)
         }
     }

@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:weightSum="4"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:text="Your neck degree: 30 "
+        android:layout_marginTop="15dp"
+        android:textSize="24sp" />
+    <RatingBar
+        android:id="@+id/rating_degree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:numStars="5"
+
+        android:isIndicator="true"
+
+        />
+
+    <TextView
+        android:id="@+id/txt_detail_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        tools:text=" weight of your head effectively increases to 12kg adding unnecessary strain to your neck">
+
+    </TextView>
+    <LinearLayout
+        android:layout_marginTop="70dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/text_ok"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/text_cancel"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.Calfit" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/brand_color</item>
+        <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryVariant">#9DCEFF</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondary_color </item>
         <item name="colorSecondaryVariant">#EEA4CE</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -29,5 +29,30 @@
         <item name="boxCornerRadiusTopStart">14dp</item>
         <item name="boxCornerRadiusBottomStart">14dp</item>
         <item name="boxCornerRadiusBottomEnd">14dp</item>
+    </style>
+
+    <style name="DialogFragmentTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/secondary_color</item>
+        <item name="colorAccent">@color/white</item>
+
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Calfit.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Calfit.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Calfit.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="LaunchTheme" parent="Theme.Calfit">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:statusBarColor">@color/splash_black</item>
+
+
+
     </style>
 </resources>

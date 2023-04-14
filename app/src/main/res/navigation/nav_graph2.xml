@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashBoardFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.oguzhancetin.goodpostureapp.fragment.MainFragment"
+        android:label="Camera"
+        tools:layout="@layout/fragment_main"
+        >
+        <argument
+            android:name="uri"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
+        <argument
+            android:name="isRecordedPhoto"
+            app:argType="boolean"
+            android:defaultValue="false">
+        </argument>
+        <action
+            android:id="@+id/action_mainFragment_to_galleryFragment3"
+            app:destination="@id/galleryFragment"
+            app:enterAnim="@anim/from_right_to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.oguzhancetin.goodpostureapp.fragment.GalleryFragment"
+        android:label="Gallery"
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_galleryFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/from_left_to_right"
+            app:exitAnim="@anim/from_right_to_left"
+            app:popUpTo="@id/dashBoardFragment"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/exercisesFragment"
+        android:name="com.oguzhancetin.goodpostureapp.fragment.ExercisesFragment"
+        android:label="Exercises"
+        tools:layout="@layout/fragment_exercises" >
+        <action
+            android:id="@+id/action_exercisesFragment_to_exerciseDetailFragment"
+            app:destination="@id/exerciseDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.oguzhancetin.goodpostureapp.fragment.DashBoardFragment"
+        android:label="Forward Head Correction"
+        tools:layout="@layout/fragment_dash_board" >
+        <action
+            android:id="@+id/action_dashBoardFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_exercisesFragment"
+            app:destination="@id/exercisesFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_recordsFragment"
+            app:destination="@id/recordsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordsFragment"
+        android:name="com.oguzhancetin.goodpostureapp.fragment.RecordsFragment"
+        android:label="Records"
+        tools:layout="@layout/fragment_records" >
+        <action
+            android:id="@+id/action_recordsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exerciseDetailFragment"
+        android:name="com.oguzhancetin.goodpostureapp.fragment.ExerciseDetailFragment"
+        android:label="Exercise Detail"
+        tools:layout="@layout/fragment_exercise_detail" >
+        <argument
+            android:name="exercise"
+            app:argType="com.oguzhancetin.goodpostureapp.data.model.Exercise" />
+    </fragment>
+</navigation>

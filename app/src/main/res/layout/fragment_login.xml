@@ -36,9 +36,8 @@
         android:id="@+id/textinput_email"
         style="@style/MyEditText"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="#F7F8F8"
         android:hint="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +51,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:inputType="textEmailAddress"
-            android:maxLength="8"
+            android:maxLines="2"
             android:singleLine="true"
             android:textSize="12sp" />
 
@@ -62,9 +61,8 @@
         android:id="@+id/textinput_password"
         style="@style/MyEditText"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:background="#F7F8F8"
         android:hint="Password"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +147,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
