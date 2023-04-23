@@ -1,5 +1,6 @@
 package com.example.calfit
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.oguzhancetin.goodpostureapp.PostureActivity
 import com.permissionx.guolindev.PermissionX
 
 class HomeScreenActivity : AppCompatActivity() {
@@ -37,7 +39,9 @@ class HomeScreenActivity : AppCompatActivity() {
             .request { allGranted, grantedList, deniedList ->
             }
 
-
+        _binding.fab.setOnClickListener {
+            startActivity(Intent(this,PostureActivity::class.java))
+        }
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.label) {
                 "fragment_sub_activity" -> {

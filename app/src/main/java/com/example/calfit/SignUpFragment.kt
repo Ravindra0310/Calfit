@@ -73,7 +73,7 @@ class SignUpFragment : Fragment() {
     }
 
     private fun writeNewUser(userId: String, name: String, email: String) {
-        val user = UserDetails(name, email,image = null)
+        val user = UserDetails(name, email,image = null,null,null,null,null,null)
         database.child("users").child(userId).setValue(user)
     }
 }

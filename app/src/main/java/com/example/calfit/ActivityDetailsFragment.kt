@@ -16,6 +16,8 @@ import com.example.calfit.model.Subcategory
 import com.example.calfit.model.Variant
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerCallback
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -31,6 +33,8 @@ class ActivityDetailsFragment : Fragment() {
     private lateinit var subCategory: Subcategory
     private lateinit var variant: Variant
     var position: Int = 0
+    var started:Boolean=false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +47,15 @@ class ActivityDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         variant = args.variants
         subCategory = variant.subcategories?.get(0)!!
+        binding.youtubePlayerView.addYouTubePlayerListener(object :
+            AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val videoId = subCategory.youtube_link
+                if (videoId != null) {
+                    youTubePlayer.loadVideo(videoId, 0f)
+                }
+            }
+        })
         updateUi()
         lifecycle.addObserver(binding.youtubePlayerView);
         textToSpeech = TextToSpeech(
@@ -65,35 +78,27 @@ class ActivityDetailsFragment : Fragment() {
         binding.tvTitle.text = subCategory.title
         binding.tvDescription.text = subCategory.description
         binding.textView9.text = "1 Exercises | ${subCategory.duration}mins | 320 Calories Burn"
-        binding.youtubePlayerView.addYouTubePlayerListener(object :
-            AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                val videoId = subCategory.youtube_link
-                if (videoId != null) {
-                    youTubePlayer.loadVideo(videoId, 0f)
-                }
-            }
-        })
         binding.btnStart.text = "Start"
         binding.txtProgressTimer.text="0"
+            binding.youtubePlayerView.getYouTubePlayerWhenReady(object :YouTubePlayerCallback{
+                override fun onYouTubePlayer(youTubePlayer: YouTubePlayer) {
+                    youTubePlayer.loadVideo(subCategory.youtube_link.toString(),0f)
+                }
+            })
         binding.btnStart.setOnClickListener {
             when (binding.btnStart.text.toString()) {
                 "Start" -> {
-                    textToSpeech!!.speak(
-                        " start ${subCategory.title}+${subCategory.duration} seconds",
-                        TextToSpeech.QUEUE_FLUSH,
-                        null
-                    )
-                    startTimer()
-                }
-                "Next" -> {
-                    if (position == variant.subcategories?.size?.minus(1)) {
-                        findNavController().popBackStack()
-                    } else {
-                        subCategory = variant.subcategories?.get(position + 1)!!
-                        updateUi()
+                    if (!started) {
+                        textToSpeech!!.speak(
+                            " start ${subCategory.title}+${subCategory.duration} seconds",
+                            TextToSpeech.QUEUE_FLUSH,
+                            null
+                        )
+                        started = true
+                        startTimer()
                     }
                 }
+                "Next" -> updateUi()
             }
 
 
@@ -121,7 +126,13 @@ class ActivityDetailsFragment : Fragment() {
                     TextToSpeech.QUEUE_FLUSH,
                     null
                 )
+                started=false
                 binding.btnStart.text = "Next"
+                if (position == variant.subcategories?.size?.minus(1)) {
+                    findNavController().popBackStack()
+                } else {
+                    subCategory = variant.subcategories?.get(position + 1)!!
+                }
             }
         }.start()
     }

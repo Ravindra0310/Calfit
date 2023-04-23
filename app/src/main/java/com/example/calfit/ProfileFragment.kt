@@ -1,59 +1,100 @@
 package com.example.calfit
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.example.calfit.databinding.FragmentProfileBinding
+import com.example.calfit.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+    private lateinit var myRef: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        auth = Firebase.auth
+        database =
+            FirebaseDatabase.getInstance("https://culfit-c4cd1-default-rtdb.asia-southeast1.firebasedatabase.app")
+        myRef = database.getReference("Users")
+        if (auth.currentUser != null) {
+           binding.tvName.text= auth.currentUser!!.displayName
+                Glide.with(binding.ivProfilePic).load(auth.currentUser!!.photoUrl).circleCrop().into(binding.ivProfilePic)
+            val database =
+                FirebaseDatabase.getInstance("https://culfit-c4cd1-default-rtdb.asia-southeast1.firebasedatabase.app")
+            val myRef = database.getReference("Users")
+            myRef.child(auth.currentUser!!.uid).child("UserData").get().addOnSuccessListener {
+                val data=it.value as Map<String, String>
+                binding.edittextAge.setText(data["age"])
+                binding.edittextHeight.setText(data["height"])
+                binding.edittextWeight.setText(data["weight"])
+
             }
+
+        }
+
+        binding.btnSave.setOnClickListener {
+            saveUserData()
+        }
+
+        binding.btnLoginOut.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(this.requireContext(),LoginActivity::class.java))
+            this.requireActivity().finish()
+        }
+    }
+
+    fun saveUserData() {
+        val hashMap: HashMap<String, String> = HashMap<String, String>()
+        if (validateEdittext()) {
+            hashMap["age"] = binding.edittextAge.text.toString()
+            hashMap["height"] = binding.edittextHeight.text.toString()
+            hashMap["weight"] = binding.edittextWeight.text.toString()
+            hashMap["gender"] =
+                if (binding.radioGroup.checkedRadioButtonId == 1) "Male" else "Female"
+            auth.currentUser?.uid?.let { myRef.child(it).child("UserData").setValue(hashMap) }
+        }
+    }
+
+
+    fun validateEdittext(): Boolean {
+        if (binding.edittextAge.length() == 0) {
+            binding.edittextAge.error = "Enter Age"
+            return false
+        }
+        if (binding.edittextHeight.length() == 0) {
+            binding.edittextHeight.error = "Enter Height"
+            return false
+        }
+        if (binding.edittextWeight.length() == 0) {
+            binding.edittextWeight.error = "Enter Weight"
+            return false
+        }
+        if (binding.radioGroup.checkedRadioButtonId == -1) {
+            return false
+        }
+        return true
     }
 }
+

@@ -71,7 +71,6 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_bmiFragment)
         }
         binding.imageView5.setOnClickListener {
-        startActivity(Intent(this.requireContext(),PostureActivity::class.java))
         }
 //        val sensorManager = this.requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
 //        val stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)

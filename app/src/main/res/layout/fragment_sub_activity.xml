@@ -16,6 +16,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/appbar_layout"
             android:layout_width="match_parent"
+            android:background="@color/primary_color"
             android:layout_height="300dp"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 

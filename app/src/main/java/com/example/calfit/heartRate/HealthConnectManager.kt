@@ -48,7 +48,7 @@ class HealthConnectManager(private val context: Context) {
         }
     }
 
-    var availability = HealthConnectAvailability.NOT_SUPPORTED
+    private var availability = HealthConnectAvailability.NOT_SUPPORTED
     init {
         checkAvailability()
     }

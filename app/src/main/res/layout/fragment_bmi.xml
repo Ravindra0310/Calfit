@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_primary_gradian"
+   android:background="@color/colorMain"
     tools:context=".BmiFragment">
 
     <Toolbar
@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_bold"
             android:text="BMI Calculator"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <ImageView
